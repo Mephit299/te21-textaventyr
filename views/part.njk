@@ -3,8 +3,13 @@
 <main class="container">
   {% if part %}
   <div>
-    <h2>{{part.name}}</h2>
-    <p>{{part.text}}</p>
+    <div class="hero">
+      <h2>{{part.name}}</h2>
+      {%if part.image %}
+      <img src="{{part.image}}" alt="{{part.name}}">
+      {% endif %}
+    </div>
+      <p>{{part.text}}</p>
     <ul>
       {% for option in part.options %}
       <li><a href="/story/{{option.target}}">{{option.text}}</a></li>
