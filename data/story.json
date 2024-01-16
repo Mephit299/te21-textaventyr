@@ -2,6 +2,7 @@
   "parts": [
     {
       "id": 0,
+      "image": "story0.jpg",
       "name": "The Whispering Grove",
       "text": "As you step into the Whispering Grove, the mysterious whispers grow louder. The trees seem to shift and rearrange themselves as if sharing ancient secrets. You feel a tingling sensation as you delve deeper into the grove.",
       "options": [
@@ -19,6 +20,7 @@
     },
     {
       "id": 1,
+      "image": "story1.jpg",
       "name": "The Heart of the Whispering Grove",
       "text": "As you follow the whispers, you reach the heart of the Whispering Grove. An ancient tree stands tall, its bark inscribed with forgotten runes. A soft glow emanates from its core, inviting you to touch it.",
       "options": [
