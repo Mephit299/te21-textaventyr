@@ -14,6 +14,18 @@ router.post('/username', function(req, res){
   res.redirect('/story/0')
 })
 
+//router.post('/inventory', function(req, res){
+  // req.session.inventory = req.body.item
+//  req.session.inventory = [...req.session.inventory, req.body.item]
+//  console.log(req.session.inventory)
+//  res.redirect('/story/0')
+//})
+
+router.get('/visons', function (req,res){
+  if (req.body.visions)
+  req.session.visions = true
+})
+
 router.get('/story/:id', function (req, res) {
   let part = story.parts.find((part) => part.id === parseInt(req.params.id))
   if (!part) {
