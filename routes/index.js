@@ -21,15 +21,20 @@ router.post('/username', function(req, res){
 //  res.redirect('/story/0')
 //})
 
-router.get('/visons', function (req,res){
-  if (req.body.visions)
-  req.session.visions = true
-})
-
 router.get('/story/:id', function (req, res) {
   let part = story.parts.find((part) => part.id === parseInt(req.params.id))
+  try {
+    if (part.vision)
+      req.session.vision = true
+    } catch (error) {}
   if (!part) {
     res.status(404).render('404.njk', { title: '404' })
+    if (req.session.vision){
+      const placeholder = document.createElement ('p');
+      placeholder.innerHTML = "pog"
+      document.getElementById("placeholder").appendChild(placeholder) // this does not work :(
+    }
+    
     return
   }
 
