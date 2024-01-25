@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
 router.post('/username', function(req, res){
   req.session.username = req.body.username
   console.log(req.session.username)
-  res.redirect('/story/0')
+  res.redirect('/dbtest/1')
 })
 
 //router.post('/inventory', function(req, res){
@@ -50,10 +50,15 @@ router.get('/dbtest/:id', async (req, res) => {
     const id = req.params.id
     const [parts] = await pool.promise().query(`SELECT * FROM levi_part WHERE id = ${id}`)
     const [options] = await pool.promise().query(`SELECT * FROM levi_option WHERE part_id = ${id}`)
-    res.json({parts, options})
+    let part ={ ... parts[0], options}
+    const name = part.name.replace('[PLAYER]', req.session.username)
+    part = { ...part, name: name}
+    res.render('partdb.njk', { title: name, part: part }) 
+
   } catch (error) {
     console.log(error)
     res.sendStatus(500)
+    res.status(404).render('404.njk', { title: '404' })
   }
 })
 
